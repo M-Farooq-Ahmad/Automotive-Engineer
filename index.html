@@ -1,1 +1,330 @@
-Farooq Baloch
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engr. Farooq Ahmad | Automotive Engineer Portfolio</title>
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --primary-blue: #007BFF;
+            --bg-dark: #111;
+            --text-light: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            overflow: hidden; /* Prevents main body scrolling, sections will handle their own */
+            background-color: #000;
+        }
+
+        /* Background Layers */
+        .global-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('imagebg.jpg') no-repeat center center/cover;
+            z-index: -2;
+        }
+
+        .section-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            filter: blur(8px);
+            transition: opacity 0.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+        }
+
+        .active-bg { opacity: 0.6; }
+
+        /* Header / Navbar */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        /* Hover turn into buttons effect */
+        nav ul li a:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+        }
+
+        /* Sections Handling */
+        section {
+            display: none; /* Hidden by default */
+            height: calc(100vh - 70px);
+            padding: 40px 10%;
+            overflow-y: auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .active-section { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Cards */
+        .content-card {
+            background: var(--card-bg);
+            color: #333;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-left: 8px solid var(--primary-blue);
+        }
+
+        h1, h2 { color: #111; margin-bottom: 20px; }
+        p { line-height: 1.6; margin-bottom: 15px; }
+
+        /* Contact Section Specifics */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item img {
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .contact-item a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Mobile View Styles */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none; /* Hide standard nav */
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: #000;
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+            }
+
+            nav ul.mobile-active { display: flex; }
+
+            .hamburger { display: flex; }
+            
+            .content-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="global-bg"></div>
+    <div id="bg-home" class="section-bg active-bg" style="background-image: url('home.jpg');"></div>
+    <div id="bg-experience" class="section-bg" style="background-image: url('experience.jpg');"></div>
+    <div id="bg-projects" class="section-bg" style="background-image: url('projects.jpg');"></div>
+    <div id="bg-skills" class="section-bg" style="background-image: url('skills.jpg');"></div>
+    <div id="bg-education" class="section-bg" style="background-image: url('education.jpg');"></div>
+    <div id="bg-certifications" class="section-bg" style="background-image: url('certifications.jpg');"></div>
+    <div id="bg-contact" class="section-bg" style="background-image: url('contact.jpg');"></div>
+
+    <header>
+        <div class="logo">FAROOQ AHMAD</div>
+        <nav>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+            <ul id="nav-links">
+                <li><a onclick="showPage('home')">Home</a></li>
+                <li><a onclick="showPage('experience')">Experience</a></li>
+                <li><a onclick="showPage('projects')">Projects</a></li>
+                <li><a onclick="showPage('skills')">Skills</a></li>
+                <li><a onclick="showPage('education')">Education</a></li>
+                <li><a onclick="showPage('certifications')">Certifications</a></li>
+                <li><a href="https://drive.google.com/file/d/1qucT4vX3YTpAtSEFENE05PURuFM1ZOqw/view?usp=sharing" target="_blank">Resume</a></li>
+                <li><a onclick="showPage('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="active-section">
+        <div class="content-card">
+            <h1>Automotive Engineer</h1>
+            <p>I am Muhammad Farooq Ahmad, a passionate Automotive Engineering student at UET Lahore. My expertise lies in vehicle dynamics, CAD design (SolidWorks/Catia), and structural analysis.</p>
+            <p>I aim to revolutionize the automotive industry through sustainable design and precision engineering.</p>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="content-card">
+            <h2>Work Experience</h2>
+            <div style="border-left: 3px solid #007BFF; padding-left: 15px; margin-bottom: 20px;">
+                <h3>Internee - Daewoo Express</h3>
+                <p>Maintenance and inspection of heavy transport vehicles. Analysis of engine performance and transmission systems.</p>
+            </div>
+            <div style="border-left: 3px solid #007BFF; padding-left: 15px;">
+                <h3>Internee - Al Rehman Auto Workshop</h3>
+                <p>Hands-on experience with internal combustion engines, braking systems, and suspension overhauling.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="content-card">
+            <h2>Technical Projects</h2>
+            <h3>Formula Student (UETL)</h3>
+            <p>Contributed to the design of the chassis and suspension system for the student-led Formula racing car project.</p>
+            <h3>Manual Roller Machine</h3>
+            <p>Designed and fabricated a manual rolling machine for sheet metal bending, focusing on mechanical efficiency.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="content-card">
+            <h2>Technical Skills</h2>
+            <p><strong>Software:</strong> SolidWorks, Catia, Ansys, AutoCAD, Adobe Illustrator, Figma.</p>
+            <p><strong>Engineering:</strong> Vehicle Dynamics, IC Engines, Thermodynamics, Chassis Design.</p>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="content-card">
+            <h2>Education</h2>
+            <p><strong>B.Sc Automotive Engineering</strong><br>University of Engineering and Technology (UET), Lahore</p>
+            <p><strong>F.Sc Pre-Engineering</strong><br>Government College University (GCU), Lahore</p>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <div class="content-card">
+            <h2>Certifications</h2>
+            <ul>
+                <li>Certified SolidWorks Associate (CSWA)</li>
+                <li>Advanced Catia V5 Training</li>
+                <li>UI/UX Design Essentials (Figma)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="content-card">
+            <h2>Contact Me</h2>
+            
+            <div class="contact-item">
+                <a href="https://wa.me/923141683402"><img src="whatsapp.jpeg" alt="WhatsApp"></a>
+                <a href="https://wa.me/923141683402" target="_blank">+92 314 1683402</a>
+            </div>
+
+            <div class="contact-item">
+                <a href="mailto:engrmfarooqahmad@gmail.com"><img src="gmail.jpeg" alt="Email"></a>
+                <a href="mailto:engrmfarooqahmad@gmail.com" target="_blank">engrmfarooqahmad@gmail.com</a>
+            </div>
+
+            <div class="contact-item">
+                <a href="https://www.linkedin.com/in/farooq-baloch/"><img src="linkedin.jpeg" alt="LinkedIn"></a>
+                <a href="https://www.linkedin.com/in/farooq-baloch/" target="_blank">LinkedIn Profile</a>
+            </div>
+
+            <div class="contact-item">
+                <a href="https://github.com/M-Farooq-Ahmad"><img src="github.jpeg" alt="GitHub"></a>
+                <a href="https://github.com/M-Farooq-Ahmad" target="_blank">GitHub Repository</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // --- JAVASCRIPT LOGIC ---
+
+        function showPage(pageId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(sec => sec.classList.remove('active-section'));
+
+            // Show clicked section
+            document.getElementById(pageId).classList.add('active-section');
+
+            // Handle Background Blur Transitions
+            const backgrounds = document.querySelectorAll('.section-bg');
+            backgrounds.forEach(bg => bg.classList.remove('active-bg'));
+            document.getElementById('bg-' + pageId).classList.add('active-bg');
+
+            // Close mobile menu if open
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.remove('mobile-active');
+        }
+
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('mobile-active');
+        }
+    </script>
+</body>
+</html>
