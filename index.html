@@ -304,6 +304,47 @@
                 padding: 15px;
             }
         }
+        /* --- Fix for Header Visibility on Mobile --- */
+
+/* 1. Ensure the header stays visible and centered */
+#top-header {
+    display: flex !important; /* Forces visibility */
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 20px 20px; 
+    text-align: center;
+}
+
+/* 2. Style the Name and Badge */
+.name-title h1 {
+    font-size: 1.8rem; 
+    margin: 0;
+    color: inherit; /* Keeps your chosen color */
+}
+
+.badge {
+    background-color: #007bff; /* Example blue, change to your theme color */
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.85rem;
+}
+
+/* 3. Mobile Specific Adjustments */
+@media (max-width: 768px) {
+    #top-header {
+        padding-top: 80px; /* Pushes name down so hamburger doesn't overlap it */
+    }
+
+    .hamburger {
+        position: fixed; /* Keeps menu button in the corner */
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+    }
+}
     </style>
 </head>
 <body>
@@ -340,36 +381,16 @@
         <a href="#" onclick="showPage('contact')">Contact</a>
     </nav>
 
-    @media (max-width: 768px) {
-    /* Show header on mobile */
-    header {
-        display: block;
-        text-align: center;
-        padding: 20px 15px;
-        position: sticky;
-        top: 0;
-        background: #ffffffcc; /* Slight transparency */
-        z-index: 2000;
-        border-bottom: 1px solid #eee;
-    }
-
-    .name-title h1 {
-        font-size: 1.6rem;
-        margin-bottom: 8px;
-    }
-
-    .badge {
-        font-size: 0.9rem;
-        padding: 6px 25px;
-    }
-
-    /* Hamburger menu stays on top-right */
-    .hamburger {
-        top: 15px;
-        right: 15px;
-    }
-}
-
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('experience')">Experience</a>
+        <a href="#" onclick="showPage('projects')">Projects</a>
+        <a href="#" onclick="showPage('skills')">Skills</a>
+        <a href="#" onclick="showPage('education')">Education</a>
+        <a href="#" onclick="showPage('certifications')">Certifications</a>
+        <a href="#" onclick="showPage('home')">Resume</a>
+        <a href="#" onclick="showPage('contact')">Contact</a>
+    </div>
 
     <section id="home" class="active-section">
         <div class="content-card">
