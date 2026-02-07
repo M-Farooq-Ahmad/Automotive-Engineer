@@ -340,16 +340,36 @@
         <a href="#" onclick="showPage('contact')">Contact</a>
     </nav>
 
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#" onclick="showPage('home')">Home</a>
-        <a href="#" onclick="showPage('experience')">Experience</a>
-        <a href="#" onclick="showPage('projects')">Projects</a>
-        <a href="#" onclick="showPage('skills')">Skills</a>
-        <a href="#" onclick="showPage('education')">Education</a>
-        <a href="#" onclick="showPage('certifications')">Certifications</a>
-        <a href="#" onclick="showPage('home')">Resume</a>
-        <a href="#" onclick="showPage('contact')">Contact</a>
-    </div>
+    @media (max-width: 768px) {
+    /* Show header on mobile */
+    header {
+        display: block;
+        text-align: center;
+        padding: 20px 15px;
+        position: sticky;
+        top: 0;
+        background: #ffffffcc; /* Slight transparency */
+        z-index: 2000;
+        border-bottom: 1px solid #eee;
+    }
+
+    .name-title h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+    }
+
+    .badge {
+        font-size: 0.9rem;
+        padding: 6px 25px;
+    }
+
+    /* Hamburger menu stays on top-right */
+    .hamburger {
+        top: 15px;
+        right: 15px;
+    }
+}
+
 
     <section id="home" class="active-section">
         <div class="content-card">
