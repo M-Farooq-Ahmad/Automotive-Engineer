@@ -180,7 +180,7 @@
             padding: 50px 60px;
             box-shadow: 0 25px 50px rgba(0,0,0,0.3);
             text-align: center;
-            margin-bottom: 80px; /* Extra space to prevent footer overlap */
+            margin-bottom: 80px; 
         }
 
         h2 {
@@ -231,12 +231,40 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
 
-        /* Contact Section Styles - FIXED FOR MOBILE */
+        /* New Certification Row Layout */
+        .cert-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px 25px;
+            margin: 12px 0;
+            border-radius: 8px;
+            text-align: left;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            gap: 15px;
+        }
+
+        .cert-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        /* Helper for Centering Buttons */
+        .btn-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        /* Contact Section Styles */
         .contact-row {
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap; /* Allows text to wrap */
+            flex-wrap: wrap; 
             background: #f8f8f8;
             border-left: 6px solid var(--primary-blue);
             border-radius: 12px;
@@ -247,7 +275,7 @@
             font-size: 1.1rem;
             transition: 0.3s;
             width: 100%;
-            word-break: break-word; /* Prevents long emails from overflowing */
+            word-break: break-word; 
         }
 
         .contact-row:hover {
@@ -272,13 +300,19 @@
         .resume-btn {
             background: var(--primary-blue);
             color: white;
-            padding: 16px 45px;
+            padding: 12px 30px;
             border-radius: 12px;
             text-decoration: none;
             font-weight: 700;
             display: inline-block;
-            margin-top: 25px;
             transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        /* Larger version for Resume buttons */
+        .btn-large {
+            padding: 16px 45px;
+            margin-top: 25px;
         }
 
         .resume-btn:hover { background: #0019a3; transform: translateY(-2px); }
@@ -288,6 +322,16 @@
             .info-header { flex-direction: column; gap: 5px; }
             .info-meta { text-align: left; font-size: 0.85rem; }
             .content-card { padding: 40px 25px; }
+            
+            /* Certification mobile layout */
+            .cert-row {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            .cert-row .resume-btn {
+                width: 100%;
+            }
         }
 
         @media (max-width: 768px) {
@@ -296,7 +340,6 @@
             section { min-height: 100vh; padding-top: 100px; }
             h2 { font-size: 1.8rem; }
             
-            /* Improved Contact spacing for mobile */
             .contact-row {
                 flex-direction: column;
                 text-align: center;
@@ -304,47 +347,24 @@
                 padding: 15px;
             }
         }
-        /* --- Fix for Header Visibility on Mobile --- */
 
-/* 1. Ensure the header stays visible and centered */
-#top-header {
-    display: flex !important; /* Forces visibility */
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px 20px 20px; 
-    text-align: center;
-}
+        #top-header {
+            display: flex !important; 
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px 20px 20px; 
+            text-align: center;
+        }
 
-/* 2. Style the Name and Badge */
-.name-title h1 {
-    font-size: 1.8rem; 
-    margin: 0;
-    color: inherit; /* Keeps your chosen color */
-}
-
-.badge {
-    background-color: #007bff; /* Example blue, change to your theme color */
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-top: 8px;
-    font-size: 0.85rem;
-}
-
-/* 3. Mobile Specific Adjustments */
-@media (max-width: 768px) {
-    #top-header {
-        padding-top: 80px; /* Pushes name down so hamburger doesn't overlap it */
-    }
-
-    .hamburger {
-        position: fixed; /* Keeps menu button in the corner */
-        top: 20px;
-        right: 20px;
-        z-index: 9999;
-    }
-}
+        @media (max-width: 768px) {
+            #top-header { padding-top: 80px; }
+            .hamburger {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 9999;
+            }
+        }
     </style>
 </head>
 <body>
@@ -399,8 +419,10 @@
             <p style="text-align: center; font-size: 1.15rem; line-height: 1.9; color: #333;">
                 I am a final-year <strong>Automotive Engineering student</strong> with a strong passion for vehicle design, analysis, and engineering problem-solving. I have hands-on experience with industry-standard tools such as AutoCAD for technical design and ANSYS for structural and simulation analysis. Along with my technical expertise, I possess strong soft skills, including communication, teamwork, and adaptability, which enable me to work effectively in collaborative engineering environments. I am highly motivated to apply my knowledge to real-world automotive challenges and continuously improve my skills in modern engineering technologies. I am currently seeking opportunities where I can contribute, learn, and grow as a professional automotive engineer.
             </p>
-            <a href="https://drive.google.com/file/d/1B8a5kwWqOB0o5Nt1PNMYa3g8tyjUno6F/view?usp=sharing" target="_blank" class="resume-btn">Resume / Cv</a>
-            <a href="https://m-farooq-ahmad.github.io/UI-UX/" target="_blank" class="resume-btn">Other Web</a>
+            <div class="btn-container">
+                <a href="https://drive.google.com/file/d/1B8a5kwWqOB0o5Nt1PNMYa3g8tyjUno6F/view?usp=sharing" target="_blank" class="resume-btn btn-large">Resume / Cv</a>
+                <a href="https://m-farooq-ahmad.github.io/UI-UX/" target="_blank" class="resume-btn btn-large">Other Web</a>
+            </div>
         </div>
     </section>
 
@@ -418,7 +440,9 @@
                 <div class="sub-item">Checked braking, suspension, and transmission systems.</div>
                 <div class="sub-item">Diagnosed and fixed basic electrical faults.</div>
                 <div class="sub-item">Learned vehicle inspection and safety procedures.</div>
-                <a href="https://drive.google.com/drive/folders/1BVTrB47erypG3tevi1U9Fv6BbNUBEiuiX?usp=sharing" target="_blank" class="resume-btn">Certificate</a>
+                <div class="btn-container">
+                    <a href="https://drive.google.com/drive/folders/12UtqB9sCmDmeYHeSGsyPYHcHfrSH7GuiX?usp=sharing" target="_blank" class="resume-btn">Certificate</a>
+                </div>
             </div>
 
             <div class="info-box">
@@ -430,7 +454,9 @@
                 <div class="sub-item">Assisted in vehicle diagnostics and repairs.</div>
                 <div class="sub-item">Helped test vehicle performance and components.</div>
                 <div class="sub-item">Learned modern automotive and EV technologies.</div>
-                <a href="https://drive.google.com/drive/folders/1NDcvzJH77S4O78WUu9ck1WXax5X1V9-J?usp=sharing" target="_blank" class="resume-btn">Certificate</a>
+                <div class="btn-container">
+                    <a href="https://drive.google.com/drive/folders/1NDcvzJH77S4O78WUu9ck1WXax5X1V9-J?usp=sharing" target="_blank" class="resume-btn">Certificate</a>
+                </div>
             </div>
         </div>
     </section>
@@ -477,7 +503,9 @@
                     <div class="info-meta">Chiniot, Pakistan<br>2020 – 2022</div>
                 </div>
                 <div class="sub-item">F.Sc Pre-Engineering (933 / 1100)</div>
-                <a href="https://drive.google.com/drive/folders/1oeD8BKbHkzxBm9plKIHauibZn2gp3BTn?usp=sharing" target="_blank" class="resume-btn">Certificate</a>
+                <div class="btn-container">
+                    <a href="https://drive.google.com/drive/folders/1oeD8BKbHkzxBm9plKIHauibZn2gp3BTn?usp=sharing" target="_blank" class="resume-btn">Certificate</a>
+                </div>
             </div>
             <div class="info-box">
                 <div class="info-header">
@@ -485,7 +513,9 @@
                     <div class="info-meta">Lahore, Pakistan<br>2018 – 2020</div>
                 </div>
                 <div class="sub-item">Matric Science (843 / 1100)</div>
-                <a href="https://drive.google.com/drive/folders/1qsm7gH9nm7-rsb46dKBlrhXQzwRpm41C?usp=sharing" target="_blank" class="resume-btn">Certificate</a>
+                <div class="btn-container">
+                    <a href="https://drive.google.com/drive/folders/1qsm7gH9nm7-rsb46dKBlrhXQzwRpm41C?usp=sharing" target="_blank" class="resume-btn">Certificate</a>
+                </div>
             </div>
         </div>
     </section>
@@ -494,13 +524,36 @@
         <div class="content-card">
             <h2>Certifications</h2>
             <div class="title-underline"></div>
-            <div class="sub-item"><strong>Automotive Industrial Engineering —</strong> Coursera</div>
-            <div class="sub-item"><strong>Introduction to Solid Edges —</strong> Coursera</div>
-            <div class="sub-item"><strong>Design thinking —</strong> The Open University</div>
-            <div class="sub-item"><strong>Data Analysis —</strong> The Open University</div>
-            <div class="sub-item"><strong>Ethics in science —</strong> The Open University</div>
-            <div class="sub-item"><strong>Project governance and Project Management Office (PMO) —</strong> The Open University</div>
-            <div class="sub-item"><strong>Personal development planning for engineering —</strong> The Open University</div>
+            
+            <div class="cert-row">
+                <div class="cert-text"><strong>Automotive Industrial Engineering —</strong> Coursera</div>
+                <a href="#" target="_blank" class="resume-btn">Certificate</a>
+            </div>
+
+            <div class="cert-row">
+                <div class="cert-text"><strong>Introduction to Solid Edges —</strong> Coursera</div>
+                <a href="#" target="_blank" class="resume-btn">Certificate</a>
+            </div>
+
+            <div class="cert-row">
+                <div class="cert-text"><strong>Data Analysis —</strong> The Open University</div>
+                <a href="#" target="_blank" class="resume-btn">Certificate</a>
+            </div>
+
+            <div class="cert-row">
+                <div class="cert-text"><strong>Ethics in science —</strong> The Open University</div>
+                <a href="#" target="_blank" class="resume-btn">Certificate</a>
+            </div>
+
+            <div class="cert-row">
+                <div class="cert-text"><strong>PG & (PMO) —</strong> The Open University</div>
+                <a href="#" target="_blank" class="resume-btn">Certificate</a>
+            </div>
+
+            <div class="cert-row">
+                <div class="cert-text"><strong>Personal development planning for eng. —</strong> The Open University</div>
+                <a href="#" target="_blank" class="resume-btn">Certificate</a>
+            </div>
         </div>
     </section>
 
@@ -534,21 +587,17 @@
 
     <script>
         function showPage(pageId) {
-            // Hide all sections
             const sections = document.querySelectorAll('section');
             sections.forEach(sec => sec.classList.remove('active-section'));
             
-            // Show target section
             const targetSec = document.getElementById(pageId);
             targetSec.classList.add('active-section');
-            targetSec.scrollTop = 0; // Reset scroll position within section
+            targetSec.scrollTop = 0;
 
-            // Handle backgrounds
             const backgrounds = document.querySelectorAll('.section-overlay');
             backgrounds.forEach(bg => bg.classList.remove('active-bg'));
             document.getElementById('bg-' + pageId).classList.add('active-bg');
 
-            // Update Nav Active State
             const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-menu a');
             navLinks.forEach(link => {
                 link.classList.remove('active-link');
@@ -557,7 +606,6 @@
                 }
             });
 
-            // Close mobile menu
             document.getElementById('mobileMenu').classList.remove('open');
         }
 
